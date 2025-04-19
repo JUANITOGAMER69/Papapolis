@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papapolis - El Reino de las Papas Crujientes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <link rel="icon" href="https://emojicdn.elk.sh/🍟" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body class="bg-yellow-50 text-brown-900 font-sans">
+  <!-- Header -->
+  <header class="bg-yellow-400 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <img src="https://i.imgur.com/32MWifX.png" alt="Logo Papapolis" class="w-16 h-16 md:w-20 md:h-20 rounded-full" data-aos="fade-right">
+        <h1 class="text-2xl md:text-3xl font-bold" data-aos="fade-left">Papapolis</h1>
+      </div>
+      <!-- Menú escritorio -->
+      <nav class="space-x-6 hidden md:block">
+        <a href="#menu" class="hover:text-red-600 font-semibold">Menú</a>
+        <a href="#nosotros" class="hover:text-red-600 font-semibold">Nosotros</a>
+        <a href="#contacto" class="hover:text-red-600 font-semibold">Contacto</a>
+      </nav>
+      <!-- Botón de papas en móvil -->
+      <div class="md:hidden">
+        <button id="toggleMenu" class="text-3xl">🍟</button>
+      </div>
+    </div>
+    <!-- Menú desplegable para móvil -->
+    <div id="mobileMenu" class="md:hidden hidden bg-yellow-300 text-center py-4 space-y-2">
+      <a href="#menu" class="block text-lg font-semibold hover:text-red-600">Menú</a>
+      <a href="#nosotros" class="block text-lg font-semibold hover:text-red-600">Nosotros</a>
+      <a href="#contacto" class="block text-lg font-semibold hover:text-red-600">Contacto</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-yellow-300 text-center py-20 px-6" data-aos="fade-up">
+    <h2 class="text-4xl md:text-5xl font-extrabold mb-4">¡Bienvenido al Reino de las Papas Crujientes!</h2>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto">Descubre sabores crujientes, cremosos, picantes y únicos. En Papapolis, las papas son las reinas.</p>
+    <a href="#menu" class="mt-6 inline-block bg-red-500 text-white px-6 py-3 rounded-full text-lg hover:bg-red-600 transition">Ver Menú</a>
+  </section>
+
+  <!-- Menú -->
+  <section id="menu" class="py-16 px-6 max-w-6xl mx-auto relative bg-yellow-100 rounded-2xl shadow-inner" data-aos="fade-left">
+    <h3 class="text-3xl font-bold text-center mb-10">🍽 Nuestro Menú</h3>
+    <img src="https://imgur.com/g7tCequ.jpg" alt="Menú Papapolis" class="w-full rounded-xl shadow-lg" />
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="bg-yellow-100 py-16 px-6" data-aos="fade-right">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6">👑 Sobre Papapolis</h3>
+      <p class="text-lg">"En Papapolis creemos que la felicidad se sirve caliente, crujiente y con un toque de creatividad. No solo cocinamos papas, cocinamos momentos. Cada porción es un homenaje al placer simple de compartir, reír y disfrutar..."</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-16 px-6 max-w-3xl mx-auto" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center mb-6">📞 Contáctanos</h3>
+    <div class="text-center text-xl space-y-4">
+      <p>Teléfonos:</p>
+      <p>
+        <a href="tel:9384014761" class="text-red-600 hover:underline font-semibold">9384014761</a><br>
+        <a href="tel:9381688144" class="text-red-600 hover:underline font-semibold">9381688144</a>
+      </p>
+
+      <!-- WhatsApp -->
+      <div class="flex justify-center items-center space-x-4">
+        <p class="text-lg font-medium text-green-700">¡Únete a nuestro grupo de WhatsApp!</p>
+        <a href="https://chat.whatsapp.com/KdCmukBWOo6DEFbTTgFq3v" target="_blank"
+          class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-green-600 transition"
+          title="Únete a nuestro WhatsApp">💬</a>
+      </div>
+
+      <!-- Dirección -->
+      <div class="flex justify-center items-center space-x-4 mt-6">
+        <p class="text-lg font-medium text-blue-700">Nuestra dirección es:</p>
+        <a href="https://maps.app.goo.gl/p5aVCmwsvEhycV8m9" target="_blank"
+          class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-blue-600 transition"
+          title="Ver ubicación en Google Maps">📍</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-400 text-center py-6">
+    <p>&copy; 2025 Papapolis. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    AOS.init();
+    document.getElementById('toggleMenu').addEventListener('click', () => {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
