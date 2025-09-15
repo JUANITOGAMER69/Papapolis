@@ -1,102 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Papapolis - El Reino de las Papas Crujientes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <link rel="icon" href="https://emojicdn.elk.sh/🍟" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Amo con Fresas y Arándanos y Música</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #ffd1dc; /* fondo rosa suave */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+  }
+
+  h1 {
+    position: absolute;
+    z-index: 10;
+    color: #ff2a57;
+    font-size: 5rem;
+    text-shadow: 2px 2px 10px #aa0f3f;
+  }
+
+  .fruit {
+    position: absolute;
+    top: -60px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  #start {
+    position: absolute;
+    bottom: 30px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff2a57;
+    color: white;
+    cursor: pointer;
+    z-index: 20;
+  }
+</style>
 </head>
-<body class="bg-yellow-50 text-brown-900 font-sans">
-  <!-- Header -->
-  <header class="bg-yellow-400 shadow-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-4">
-        <img src="https://i.imgur.com/32MWifX.png" alt="Logo Papapolis" class="w-16 h-16 md:w-20 md:h-20 rounded-full" data-aos="fade-right">
-        <h1 class="text-2xl md:text-3xl font-bold" data-aos="fade-left">Papapolis</h1>
-      </div>
-      <!-- Menú escritorio -->
-      <nav class="space-x-6 hidden md:block">
-        <a href="#menu" class="hover:text-red-600 font-semibold">Menú</a>
-        <a href="#nosotros" class="hover:text-red-600 font-semibold">Nosotros</a>
-        <a href="#contacto" class="hover:text-red-600 font-semibold">Contacto</a>
-      </nav>
-      <!-- Botón de papas en móvil -->
-      <div class="md:hidden">
-        <button id="toggleMenu" class="text-3xl">🍟</button>
-      </div>
-    </div>
-    <!-- Menú desplegable para móvil -->
-    <div id="mobileMenu" class="md:hidden hidden bg-yellow-300 text-center py-4 space-y-2">
-      <a href="#menu" class="block text-lg font-semibold hover:text-red-600">Menú</a>
-      <a href="#nosotros" class="block text-lg font-semibold hover:text-red-600">Nosotros</a>
-      <a href="#contacto" class="block text-lg font-semibold hover:text-red-600">Contacto</a>
-    </div>
-  </header>
+<body>
 
-  <!-- Hero Section -->
-  <section class="bg-yellow-300 text-center py-20 px-6" data-aos="fade-up">
-    <h2 class="text-4xl md:text-5xl font-extrabold mb-4">¡Bienvenido al Reino de las Papas Crujientes!</h2>
-    <p class="text-lg md:text-xl max-w-2xl mx-auto">Descubre sabores crujientes, cremosos, picantes y únicos. En Papapolis, las papas son las reinas.</p>
-    <a href="#menu" class="mt-6 inline-block bg-red-500 text-white px-6 py-3 rounded-full text-lg hover:bg-red-600 transition">Ver Menú</a>
-  </section>
+<h1>Te Amo</h1>
 
-  <!-- Menú -->
-  <section id="menu" class="py-16 px-6 max-w-6xl mx-auto relative bg-yellow-100 rounded-2xl shadow-inner" data-aos="fade-left">
-    <h3 class="text-3xl font-bold text-center mb-10">🍽 Nuestro Menú</h3>
-    <img src="https://imgur.com/bDuYhUk" alt="Menú Papapolis" class="w-full rounded-xl shadow-lg" />
-  </section>
+<!-- Botón para iniciar animación y música -->
+<button id="start">Iniciar</button>
 
-  <!-- Nosotros -->
-  <section id="nosotros" class="bg-yellow-100 py-16 px-6" data-aos="fade-right">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">👑 Sobre Papapolis</h3>
-      <p class="text-lg">"En Papapolis creemos que la felicidad se sirve caliente, crujiente y con un toque de creatividad. No solo cocinamos papas, cocinamos momentos. Cada porción es un homenaje al placer simple de compartir, reír y disfrutar..."</p>
-    </div>
-  </section>
+<!-- Audio de fondo -->
+<audio id="bgAudio" loop>
+  <source src="wwd.mp3juice.blog - 「 wave to earth ; bad (traducción al español) 」 (320 KBps).mp3" type="audio/mpeg">
+  Tu navegador no soporta la reproducción de audio.
+</audio>
 
-  <!-- Contacto -->
-  <section id="contacto" class="py-16 px-6 max-w-3xl mx-auto" data-aos="fade-up">
-    <h3 class="text-3xl font-bold text-center mb-6">📞 Contáctanos</h3>
-    <div class="text-center text-xl space-y-4">
-      <p>Teléfonos:</p>
-      <p>
-        <a href="tel:9384014761" class="text-red-600 hover:underline font-semibold">9384014761</a><br>
-        <a href="tel:9381688144" class="text-red-600 hover:underline font-semibold">9381688144</a>
-      </p>
+<script>
+  const strawberrySVG = `
+    <svg viewBox="0 0 420 420" width="50" height="50">
+      <defs>
+        <radialGradient id="berryGrad" cx="35%" cy="30%">
+          <stop offset="0%" stop-color="#ff9aa7" />
+          <stop offset="55%" stop-color="#ff3b5c" />
+          <stop offset="100%" stop-color="#9e0b27" />
+        </radialGradient>
+        <radialGradient id="leafGrad" cx="50%" cy="20%">
+          <stop offset="0%" stop-color="#7ee08b"/>
+          <stop offset="100%" stop-color="#0f7a3a"/>
+        </radialGradient>
+      </defs>
 
-      <!-- WhatsApp -->
-      <div class="flex justify-center items-center space-x-4">
-        <p class="text-lg font-medium text-green-700">¡Únete a nuestro grupo de WhatsApp!</p>
-        <a href="https://chat.whatsapp.com/KdCmukBWOo6DEFbTTgFq3v" target="_blank"
-          class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-green-600 transition"
-          title="Únete a nuestro WhatsApp">💬</a>
-      </div>
+      <!-- Cuerpo de la fresa -->
+      <path d="M210 120c-46 0-78 34-78 72 0 50 64 110 78 122 14-12 78-72 78-122 0-38-32-72-78-72z" fill="url(#berryGrad)" stroke="#7a0f2b" stroke-width="2"/>
 
-      <!-- Dirección -->
-      <div class="flex justify-center items-center space-x-4 mt-6">
-        <p class="text-lg font-medium text-blue-700">Nuestra dirección es:</p>
-        <a href="https://maps.app.goo.gl/p5aVCmwsvEhycV8m9" target="_blank"
-          class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-blue-600 transition"
-          title="Ver ubicación en Google Maps">📍</a>
-      </div>
-    </div>
-  </section>
+      <!-- Semillitas -->
+      <ellipse cx="190" cy="160" rx="3" ry="5" fill="#ffe29a"/>
+      <ellipse cx="230" cy="160" rx="3" ry="5" fill="#ffe29a"/>
+      <ellipse cx="210" cy="190" rx="3" ry="5" fill="#ffe29a"/>
+      <ellipse cx="200" cy="210" rx="3" ry="5" fill="#ffe29a"/>
+      <ellipse cx="220" cy="210" rx="3" ry="5" fill="#ffe29a"/>
 
-  <!-- Footer -->
-  <footer class="bg-yellow-400 text-center py-6">
-    <p>&copy; 2025 Papapolis. Todos los derechos reservados.</p>
-  </footer>
+      <!-- Hojitas verdes gruesas (3 hojas) -->
+      <path d="M210 120 C 195 105, 180 90, 200 80 C 210 70, 220 90, 210 120 Z" fill="url(#leafGrad)" />
+      <path d="M210 120 C 215 105, 230 90, 220 80 C 210 70, 200 90, 210 120 Z" fill="url(#leafGrad)" />
+      <path d="M210 120 C 205 105, 210 90, 210 80 C 210 70, 210 90, 210 120 Z" fill="url(#leafGrad)" />
+    </svg>
+  `;
 
-  <script>
-    AOS.init();
-    document.getElementById('toggleMenu').addEventListener('click', () => {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-    });
-  </script>
+  const blueberrySVG = `
+    <svg viewBox="0 0 100 100" width="25" height="25">
+      <defs>
+        <radialGradient id="blueGrad" cx="40%" cy="30%">
+          <stop offset="0%" stop-color="#a1c4ff"/>
+          <stop offset="100%" stop-color="#0033a0"/>
+        </radialGradient>
+        <radialGradient id="bLeafGrad" cx="50%" cy="20%">
+          <stop offset="0%" stop-color="#7ee08b"/>
+          <stop offset="100%" stop-color="#0f7a3a"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Cuerpo del arándano -->
+      <circle cx="50" cy="50" r="25" fill="url(#blueGrad)" stroke="#00285f" stroke-width="2"/>
+
+      <!-- Hoja pequeña -->
+      <path d="M50 25 C 45 20, 35 15, 40 10 C 50 5, 55 15, 50 25 Z" fill="url(#bLeafGrad)"/>
+    </svg>
+  `;
+
+  const startBtn = document.getElementById('start');
+  const audio = document.getElementById('bgAudio');
+
+  startBtn.addEventListener('click', () => {
+    // Reproducir música
+    audio.volume = 0.8; // volumen suave
+    audio.play();
+
+    // Crear muchas fresas
+    for(let i=0; i<40; i++){
+      const div = document.createElement('div');
+      div.classList.add('fruit');
+      div.style.left = Math.random() * 100 + 'vw';
+      div.style.animationDuration = (4 + Math.random()*5) + 's';
+      div.style.animationDelay = Math.random() * 5 + 's';
+      div.innerHTML = strawberrySVG;
+      document.body.appendChild(div);
+    }
+
+    // Crear muchos arándanos con hojas
+    for(let i=0; i<40; i++){
+      const div = document.createElement('div');
+      div.classList.add('fruit');
+      div.style.left = Math.random() * 100 + 'vw';
+      div.style.animationDuration = (3 + Math.random()*4) + 's';
+      div.style.animationDelay = Math.random() * 5 + 's';
+      div.innerHTML = blueberrySVG;
+      document.body.appendChild(div);
+    }
+
+    // Desactivar botón después de iniciar
+    startBtn.disabled = true;
+    startBtn.style.opacity = 0.5;
+  });
+</script>
+
 </body>
 </html>
