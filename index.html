@@ -51,27 +51,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      pointer-events: none;
+      pointer-events: none; /* para que clic fuera del modal cierre correctamente */
     }
 
     .modal img {
-      max-width: 35vw;
+      max-width: 35vw;   /* más pequeño, mantiene proporción */
       max-height: 35vh;
       border-radius: 10px;
       display: block;
       object-fit: contain;
-      pointer-events: auto;
+      pointer-events: auto; /* permite interactuar con la imagen si se desea */
     }
 
-    /* Botón de cerrar con imagen */
     .close {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      background: url("https://i.imgur.com/gQj3XQ7.png") no-repeat center center;
-      background-size: contain;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
       cursor: pointer;
       pointer-events: auto;
     }
@@ -82,12 +79,12 @@
   <div class="luna" data-img="https://imgur.com/tY2vxPl.jpg"></div>
   <div class="luna" data-img="https://imgur.com/EG0GxEp.jpg"></div>
   <div class="luna" data-img="https://imgur.com/VnblTPk.jpg"></div>
-  <div class="luna" data-img="https://imgur.com/Gj6XKZX.jpg"></div>
+  <div class="luna" data-img="https://imgur.com/syOtvkq.jpg"></div>
 
   <!-- Modal -->
   <div class="modal-backdrop" id="modal">
+    <span class="close" id="closeBtn">×</span>
     <div class="modal">
-      <span class="close" id="closeBtn"></span>
       <img id="modalImg" src="" alt="Foto grande">
     </div>
   </div>
@@ -113,6 +110,7 @@
         modalImg.src = imgSrc;
         modal.classList.add("active");
 
+        // Iniciar música solo la primera vez
         if (!audioStarted) {
           audio.play().catch(() => {
             console.log("Autoplay bloqueado, haz clic para reproducir audio");
@@ -122,6 +120,7 @@
       });
     });
 
+    // Cerrar modal sin detener música
     closeBtn.addEventListener("click", () => {
       modal.classList.remove("active");
     });
