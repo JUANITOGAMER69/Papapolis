@@ -1,155 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Te Amo con Fresas y Arándanos y Música</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: #ffd1dc; /* fondo rosa suave */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    font-family: 'Arial', sans-serif;
-  }
+  <meta charset="UTF-8">
+  <title>Fondo con botón iniciar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://i.imgur.com/zM6YOTn.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 1s ease-in-out;
+      font-family: sans-serif;
+    }
 
-  h1 {
-    position: absolute;
-    z-index: 10;
-    color: #ff2a57;
-    font-size: 5rem;
-    text-shadow: 2px 2px 10px #aa0f3f;
-  }
+    #textoFondo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 50px;
+      color: #FFD700; /* Amarillo fuerte */
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+      pointer-events: none;
+      text-align: center;
+      padding: 0 10px; /* Para que no se salga en pantallas pequeñas */
+    }
 
-  .fruit {
-    position: absolute;
-    top: -60px;
-    animation: fall linear infinite;
-  }
+    #contenedor {
+      text-align: center;
+      margin-top: auto; /* Hace que el botón esté más abajo */
+      margin-bottom: 50px;
+      z-index: 1;
+    }
 
-  @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(110vh) rotate(360deg); }
-  }
+    #iniciar {
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      background: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s, background 0.3s;
+    }
 
-  #start {
-    position: absolute;
-    bottom: 30px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 10px;
-    border: none;
-    background-color: #ff2a57;
-    color: white;
-    cursor: pointer;
-    z-index: 20;
-  }
-</style>
+    #iniciar:hover {
+      transform: scale(1.1);
+      background: #e91e63;
+    }
+
+    #imagenFinal {
+      display: none;
+      max-width: 90%;
+      max-height: 80vh;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Media queries para pantallas pequeñas */
+    @media (max-width: 768px) {
+      #textoFondo {
+        font-size: 35px;
+      }
+
+      #iniciar {
+        padding: 12px 25px;
+        font-size: 18px;
+      }
+
+      #imagenFinal {
+        max-width: 95%;
+        max-height: 60vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #textoFondo {
+        font-size: 28px;
+      }
+
+      #iniciar {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      #imagenFinal {
+        max-width: 100%;
+        max-height: 50vh;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="textoFondo">PARA MI ROSA🌹</div>
 
-<h1>Te Amo</h1>
+  <div id="contenedor">
+    <button id="iniciar">Iniciar</button>
+    <br>
+    <img id="imagenFinal" src="https://i.imgur.com/jemzRtK.jpg" alt="Imagen final">
+  </div>
 
-<!-- Botón para iniciar animación y música -->
-<button id="start">Iniciar</button>
+  <audio id="musica" src="Sol de Verano.mp3"></audio>
 
-<!-- Audio de fondo -->
-<audio id="bgAudio" loop>
-  <source src="wwd.mp3juice.blog - 「 wave to earth ; bad (traducción al español) 」 (320 KBps).mp3" type="audio/mpeg">
-  Tu navegador no soporta la reproducción de audio.
-</audio>
+  <script>
+    const boton = document.getElementById("iniciar");
+    const imagen = document.getElementById("imagenFinal");
+    const musica = document.getElementById("musica");
+    const texto = document.getElementById("textoFondo");
 
-<script>
-  const strawberrySVG = `
-    <svg viewBox="0 0 420 420" width="50" height="50">
-      <defs>
-        <radialGradient id="berryGrad" cx="35%" cy="30%">
-          <stop offset="0%" stop-color="#ff9aa7" />
-          <stop offset="55%" stop-color="#ff3b5c" />
-          <stop offset="100%" stop-color="#9e0b27" />
-        </radialGradient>
-        <radialGradient id="leafGrad" cx="50%" cy="20%">
-          <stop offset="0%" stop-color="#7ee08b"/>
-          <stop offset="100%" stop-color="#0f7a3a"/>
-        </radialGradient>
-      </defs>
-
-      <!-- Cuerpo de la fresa -->
-      <path d="M210 120c-46 0-78 34-78 72 0 50 64 110 78 122 14-12 78-72 78-122 0-38-32-72-78-72z" fill="url(#berryGrad)" stroke="#7a0f2b" stroke-width="2"/>
-
-      <!-- Semillitas -->
-      <ellipse cx="190" cy="160" rx="3" ry="5" fill="#ffe29a"/>
-      <ellipse cx="230" cy="160" rx="3" ry="5" fill="#ffe29a"/>
-      <ellipse cx="210" cy="190" rx="3" ry="5" fill="#ffe29a"/>
-      <ellipse cx="200" cy="210" rx="3" ry="5" fill="#ffe29a"/>
-      <ellipse cx="220" cy="210" rx="3" ry="5" fill="#ffe29a"/>
-
-      <!-- Hojitas verdes gruesas (3 hojas) -->
-      <path d="M210 120 C 195 105, 180 90, 200 80 C 210 70, 220 90, 210 120 Z" fill="url(#leafGrad)" />
-      <path d="M210 120 C 215 105, 230 90, 220 80 C 210 70, 200 90, 210 120 Z" fill="url(#leafGrad)" />
-      <path d="M210 120 C 205 105, 210 90, 210 80 C 210 70, 210 90, 210 120 Z" fill="url(#leafGrad)" />
-    </svg>
-  `;
-
-  const blueberrySVG = `
-    <svg viewBox="0 0 100 100" width="25" height="25">
-      <defs>
-        <radialGradient id="blueGrad" cx="40%" cy="30%">
-          <stop offset="0%" stop-color="#a1c4ff"/>
-          <stop offset="100%" stop-color="#0033a0"/>
-        </radialGradient>
-        <radialGradient id="bLeafGrad" cx="50%" cy="20%">
-          <stop offset="0%" stop-color="#7ee08b"/>
-          <stop offset="100%" stop-color="#0f7a3a"/>
-        </radialGradient>
-      </defs>
-
-      <!-- Cuerpo del arándano -->
-      <circle cx="50" cy="50" r="25" fill="url(#blueGrad)" stroke="#00285f" stroke-width="2"/>
-
-      <!-- Hoja pequeña -->
-      <path d="M50 25 C 45 20, 35 15, 40 10 C 50 5, 55 15, 50 25 Z" fill="url(#bLeafGrad)"/>
-    </svg>
-  `;
-
-  const startBtn = document.getElementById('start');
-  const audio = document.getElementById('bgAudio');
-
-  startBtn.addEventListener('click', () => {
-    // Reproducir música
-    audio.volume = 0.8; // volumen suave
-    audio.play();
-
-    // Crear muchas fresas
-    for(let i=0; i<40; i++){
-      const div = document.createElement('div');
-      div.classList.add('fruit');
-      div.style.left = Math.random() * 100 + 'vw';
-      div.style.animationDuration = (4 + Math.random()*5) + 's';
-      div.style.animationDelay = Math.random() * 5 + 's';
-      div.innerHTML = strawberrySVG;
-      document.body.appendChild(div);
-    }
-
-    // Crear muchos arándanos con hojas
-    for(let i=0; i<40; i++){
-      const div = document.createElement('div');
-      div.classList.add('fruit');
-      div.style.left = Math.random() * 100 + 'vw';
-      div.style.animationDuration = (3 + Math.random()*4) + 's';
-      div.style.animationDelay = Math.random() * 5 + 's';
-      div.innerHTML = blueberrySVG;
-      document.body.appendChild(div);
-    }
-
-    // Desactivar botón después de iniciar
-    startBtn.disabled = true;
-    startBtn.style.opacity = 0.5;
-  });
-</script>
-
+    boton.addEventListener("click", () => {
+      document.body.style.backgroundImage = "url('https://i.imgur.com/jemzRtK.jpg')";
+      imagen.style.display = "block";
+      musica.play();
+      boton.style.display = "none";
+      texto.style.display = "none";
+    });
+  </script>
 </body>
 </html>
